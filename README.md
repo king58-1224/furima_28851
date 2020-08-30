@@ -1,24 +1,74 @@
 # README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column           | Type   | Options     |
+| -----------------| ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| password_conform | string | null: false |
+| first_name       | string | nill: false |
+| family_name      | string | nill: false |
+| first_name_kana  | string | nill: false |
+| family_name_kana | string | nill: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :products
+- has_one :address
+- has_one :card
 
-* Configuration
+## products テーブル
 
-* Database creation
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| price        | integer    | null: false                    |
+| category_id  | integer    | null: false,foreign_key:true
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many :product_images
+- belongs_to :category
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## credit_cards テーブル
 
-* Deployment instructions
+| Column      | Type   | Options     |
+| ----------- | ------ | ----------- |
+| user_id     | integer| null: false |
+| customer_id | string | null: false |
+| card_id     | string | null: false |
 
-* ...
+### Association
+
+- belongs_to: user
+
+## address テーブル
+
+| Column         | Type       | Options       |
+| -------------- | ---------- | ------------- |
+| user_id        | integer    | null: false   |
+| postal_code    | string     | null: false   |
+| prefecture_id  |  string    | null: false   |
+| municipality   | string     | null: false   |
+| block_number   | string     | null: false   |
+| apartment_name | string     | nill: false   |
+
+## Association
+
+- belongs_to :user
+
+## contract_history テーブル
+
+| Column     | Type    | Options                        |
+| ---------- | ------- | ------------------------------ |
+| product_id | integer | null: false, foreign_key: true |
+| buyer_id   | integer | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :product
