@@ -19,7 +19,6 @@
 
 - has_many :products
 - has_one :address
-- has_one :card
 
 ## products テーブル
 
@@ -43,8 +42,9 @@
 | user_id        | integer    | null: false   |
 | postal_code    | string     | null: false   |
 | municipality   | string     | null: false   |
+| prefecture_id  | integer    | null: false   |
 | block_number   | string     | null: false   |
-| apartment_name | string     | nill: false   |
+| apartment_name | string     |               |
 
 ## Association
 
