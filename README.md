@@ -28,6 +28,7 @@
 | price        | integer    | null: false                    |
 | category_id  | integer    | null: false,foreign_key:true   |
 | brand        | text       | null: false                    |
+| buyer_id     | integer    |	null: false                    |
 
 ### Association
 
@@ -45,6 +46,17 @@
 | prefecture_id  | integer    | null: false   |
 | block_number   | string     | null: false   |
 | apartment_name | string     |               |
+
+## Association
+
+- belongs_to :user
+
+## product_images テーブル
+
+| Column         | Type       | Options       |
+| -------------- | ---------- | ------------- |
+| user_id        | string     | null: false   |
+| item_id        | string     | nill: false   |
 
 ## Association
 
