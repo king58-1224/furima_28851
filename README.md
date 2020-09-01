@@ -25,8 +25,12 @@
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
-| price        | integer    | null: false                    |
-| category_id  | integer    | null: false,foreign_key:true   |
+| price        | string     | null: false                    |
+| description  | string     | null: false                    |
+| condition    | string     | null: false                    |
+| shipping_cost| string     | null: false                    |
+| shipping_days| string     | null: false                    |
+| category_id  | integer    | null: false                    |
 | brand        | text       | null: false                    |
 | buyer_id     | integer    |	null: false                    |
 
@@ -36,7 +40,7 @@
 - belongs_to :category
 - belongs_to :user
 
-## address テーブル
+## addresses テーブル
 
 | Column         | Type       | Options       |
 | -------------- | ---------- | ------------- |
@@ -46,6 +50,7 @@
 | prefecture_id  | integer    | null: false   |
 | block_number   | string     | null: false   |
 | apartment_name | string     |               |
+| phone_number	 | string     |               |
 
 ## Association
 
@@ -53,10 +58,10 @@
 
 ## product_images テーブル
 
-| Column         | Type       | Options       |
-| -------------- | ---------- | ------------- |
-| user_id        | string     | null: false   |
-| item_id        | string     | nill: false   |
+| Column      | Type     | Options                        |
+| ----------- | -------- | -------------------------------|
+| user_id     | string   | null: false                    |
+| item_id     | string   | nill: false,foreign_key: true  |
 
 ## Association
 
