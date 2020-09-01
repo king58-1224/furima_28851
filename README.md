@@ -17,28 +17,27 @@
 
 ### Association
 
-- has_many :products
-- has_one :address
+- has_many :items
+- has_many :item_purchase
 
-## products テーブル
+
+## items テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
-| price        | string     | null: false                    |
-| description  | string     | null: false                    |
+| price        | integer    | null: false                    |
+| description  | text       | null: false                    |
 | condition    | string     | null: false                    |
 | shipping_cost| string     | null: false                    |
 | shipping_days| string     | null: false                    |
 | category_id  | integer    | null: false                    |
 | brand        | text       | null: false                    |
-| buyer_id     | integer    |	null: false                    |
 
 ### Association
-
-- has_many :product_images
-- belongs_to :category
+- has_one :item_purchase
 - belongs_to :user
+
 
 ## addresses テーブル
 
@@ -54,16 +53,16 @@
 
 ## Association
 
-- belongs_to :user
+- belongs_to :item_purchase
 
-## product_images テーブル
+## item_purchases テーブル
 
 | Column      | Type     | Options                        |
 | ----------- | -------- | -------------------------------|
-| user_id     | string   | null: false                    |
-| item_id     | string   | nill: false,foreign_key: true  |
+| user_id     | integer  | null: false,foreign_key: true  |
+| item_id     | integer  | nill: false,foreign_key: true  |
 
 ## Association
-
+- belongs_to :item
 - belongs_to :user
-* ...
+- has_one :address
