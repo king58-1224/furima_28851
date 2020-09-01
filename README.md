@@ -3,17 +3,17 @@
 
 ## users テーブル
 
-| Column           | Type   | Options     |
-| -----------------| ------ | ----------- |
-| nickname         | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| password_conform | string | null: false |
-| first_name       | string | nill: false |
-| family_name      | string | nill: false |
-| first_name_kana  | string | nill: false |
-| family_name_kana | string | nill: false |
-| birthday         | date   | nill: false |
+| Column              | Type   | Options     |
+| --------------------| ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false |
+| password            | string | null: false |
+| encrypted_password  | string | null: false |
+| first_name          | string | nill: false |
+| family_name         | string | nill: false |
+| first_name_kana     | string | nill: false |
+| family_name_kana    | string | nill: false |
+| birthday            | date   | nill: false |
 
 ### Association
 
@@ -29,8 +29,8 @@
 | price        | integer    | null: false                    |
 | description  | text       | null: false                    |
 | condition    | string     | null: false                    |
-| shipping_cost| string     | null: false                    |
-| shipping_days| string     | null: false                    |
+| shipping_cost| integer    | null: false                    |
+| shipping_days| integer    | null: false                    |
 | category_id  | integer    | null: false                    |
 | brand        | text       | null: false                    |
 
@@ -49,7 +49,7 @@
 | prefecture_id  | integer    | null: false   |
 | block_number   | string     | null: false   |
 | apartment_name | string     |               |
-| phone_number	 | string     |               |
+| phone_number	 | string     | null: false              |
 
 ## Association
 
@@ -63,6 +63,18 @@
 | item_id     | integer  | nill: false,foreign_key: true  |
 
 ## Association
+- belongs_to :item
+- belongs_to :user
+- has_one :address
+
+## item_images テーブル
+
+| Column      | Type     | Options                        |
+| ----------- | -------- | -------------------------------|
+| image       | string   | null: false                    |
+| image_id    | integer  | nill: false,foreign_key: true  |
+
+## Association テーブル
 - belongs_to :item
 - belongs_to :user
 - has_one :address
