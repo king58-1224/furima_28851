@@ -18,7 +18,7 @@
 ### Association
 
 - has_many :items
-- has_many :item_purchase
+- has_many :item_purchases
 
 
 ## items テーブル
@@ -28,9 +28,10 @@
 | name         | string     | null: false                    |
 | price        | integer    | null: false                    |
 | description  | text       | null: false                    |
-| condition    | string     | null: false                    |
+| condition    | integer    | null: false                    |
 | shipping_cost| integer    | null: false                    |
 | shipping_days| integer    | null: false                    |
+| shipping_from| text       | null: false                    |
 | category_id  | integer    | null: false                    |
 | brand        | text       | null: false                    |
 
@@ -41,15 +42,15 @@
 
 ## addresses テーブル
 
-| Column         | Type       | Options       |
-| -------------- | ---------- | ------------- |
-| user_id        | integer    | null: false   |
-| postal_code    | string     | null: false   |
-| municipality   | string     | null: false   |
-| prefecture_id  | integer    | null: false   |
-| block_number   | string     | null: false   |
-| apartment_name | string     |               |
-| phone_number	 | string     | null: false              |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| user_id        | integer    | null: false,foreign_key: true  |
+| postal_code    | string     | null: false                    |
+| municipality   | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| block_number   | string     | null: false                    |
+| apartment_name | string     |                                |
+| phone_number	 | string     | null: false                    |
 
 ## Association
 
