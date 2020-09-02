@@ -33,7 +33,7 @@
 | shipping_days| integer    | null: false                    |
 | shipping_from| integer    | null: false                    |
 | category_id  | integer    | null: false                    |
-| brand        | text       | null: false                    |
+| user_id      | integer    | null: false,foreign_key: true  |
 
 ### Association
 - has_one :item_purchase
@@ -44,7 +44,7 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| item_purchase       | integer    | null: false,foreign_key: true  |
+| item_purchase_id    | integer    | null: false,foreign_key: true  |
 | postal_code         | string     | null: false                    |
 | municipality        | string     | null: false                    |
 | prefecture_id       | integer    | null: false                    |
@@ -68,14 +68,3 @@
 - belongs_to :user
 - has_one :address
 
-## item_images テーブル
-
-| Column      | Type     | Options                        |
-| ----------- | -------- | -------------------------------|
-| image       | string   | null: false                    |
-| image_id    | integer  | nill: false,foreign_key: true  |
-
-## Association テーブル
-- belongs_to :item
-- belongs_to :user
-- has_one :address
