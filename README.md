@@ -1,24 +1,70 @@
 # README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column              | Type   | Options     |
+| --------------------| ------ | ----------- |
+| nickname            | string | null: false |
+| email               | string | null: false |
+| password            | string | null: false |
+| encrypted_password  | string | null: false |
+| first_name          | string | nill: false |
+| family_name         | string | nill: false |
+| first_name_kana     | string | nill: false |
+| family_name_kana    | string | nill: false |
+| birthday            | date   | nill: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :item_purchases
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| price        | integer    | null: false                    |
+| description  | text       | null: false                    |
+| condition    | integer    | null: false                    |
+| shipping_cost| integer    | null: false                    |
+| shipping_days| integer    | null: false                    |
+| shipping_from| integer    | null: false                    |
+| category_id  | integer    | null: false                    |
+| user_id      | integer    | null: false,foreign_key: true  |
 
-* How to run the test suite
+### Association
+- has_one :item_purchase
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## addresses テーブル
 
-* ...
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| item_purchase_id    | integer    | null: false,foreign_key: true  |
+| postal_code         | string     | null: false                    |
+| municipality        | string     | null: false                    |
+| prefecture_id       | integer    | null: false                    |
+| block_number        | string     | null: false                    |
+| apartment_name      | string     |                                |
+| phone_number	      | string     | null: false                    |
+
+## Association
+
+- belongs_to :item_purchase
+
+## item_purchases テーブル
+
+| Column      | Type     | Options                        |
+| ----------- | -------- | -------------------------------|
+| user_id     | integer  | null: false,foreign_key: true  |
+| item_id     | integer  | nill: false,foreign_key: true  |
+
+## Association
+- belongs_to :item
+- belongs_to :user
+- has_one :address
+
