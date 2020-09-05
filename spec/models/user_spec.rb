@@ -51,5 +51,32 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
+    it "ユーザー本名が、名字と名前がそれぞれ必須であること" do
+      @user.first_name = nil
+      @user.family_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+    end
+    it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
+      @user.first_name = "king"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
+    end
+    it "ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること" do
+      @user.first_name_kana = nil
+      @user.family_name_kana = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
+    end
+    it "ユーザー本名のフリガナは全角（カタカナ）で入力させること" do
+      @user.first_name_kana = "king"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid. Input full-width katakana characters.")
+    end
+    it "生年月日が必須であること" do
+      @user.birthday = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+    end
   end
 end
