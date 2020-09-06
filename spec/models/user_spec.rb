@@ -68,12 +68,12 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name First name is invalid. Input full-width characters.")
     end
     it "ユーザー本名のフリガナの名字が必須であること" do
-      @user.first_name_kana = nil
+      @user.first_name_kana = "king"
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana First name kana is invalid. Input full-width katakana characters..")
     end
     it "ユーザー本名のフリガナの名前必須であること" do
-      @user.family_name_kana = nil
+      @user.family_name_kana = "king"
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name kana Family name kana is invalid. Input full-width katakana characters.")
     end
