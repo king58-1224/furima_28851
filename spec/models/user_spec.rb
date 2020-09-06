@@ -67,6 +67,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("First name First name is invalid. Input full-width characters.")
     end
+    it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
+      @user.family_name = "king"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Family name Family name is invalid. Input full-width characters.")
+    end
     it "ユーザー本名のフリガナの名字が必須であること" do
       @user.first_name_kana = "king"
       @user.valid?
