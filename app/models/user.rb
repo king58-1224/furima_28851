@@ -14,6 +14,9 @@ class User < ApplicationRecord
   validates :family_name, format: { with: NAME_REGEX, message: "Family name is invalid. Input full-width characters."}
   validates :family_name_kana, format: { with: KANA_REGEX, message: "Family name kana is invalid. Input full-width katakana characters."}
   validates :birthday, presence: true
+
+  has_many :items
+  has_many :item_purchases
 end
 
 
