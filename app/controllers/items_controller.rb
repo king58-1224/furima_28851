@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @items = Item.all
   end
 
   def new 
     @items = Item.new
+
   end
 
   def create
@@ -29,4 +30,6 @@ class ItemsController < ApplicationController
     :category_id ).
     merge(user_id: current_user.id)
   end
+
+ 
 end
