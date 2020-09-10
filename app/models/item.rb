@@ -17,9 +17,9 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true }
   validates :price, inclusion: { in: 300..9_999_999, message: 'is out of range' }
 
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_cost_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_days_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_from_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, numericality: { other_than: 1, message: "must be other than" }
+  validates :condition_id, numericality: { other_than: 1, message: "must be other than" }
+  validates :shipping_cost_id, numericality: { other_than: 1, message: "must be other than" }
+  validates :shipping_days_id, numericality: { other_than: 1, message: "must be other than" }
+  validates :shipping_from_id, numericality: { other_than: 1, message: "must be other than" }
 end

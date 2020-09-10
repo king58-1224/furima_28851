@@ -9,10 +9,7 @@ FactoryBot.define do
     shipping_from_id { 2 }
     category_id { 2 }
     association :user
-    # user_id { 1 }
-    # activehashで記述しているものは""を外しましょう！
-    # factorybotでuserとアソシエーションを組みましょう！
-
+    
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
     end
