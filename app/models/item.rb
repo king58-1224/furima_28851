@@ -19,5 +19,6 @@ class Item < ApplicationRecord
 
   with_options presence: true do
    validates :category_id, :condition_id, :shipping_cost_id, :shipping_days_id, :shipping_from_id, numericality:{ other_than: 1, message: "must be other than" } 
+   
   end
 end
