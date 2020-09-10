@@ -4,12 +4,11 @@ RSpec.describe Item, type: :model do
   # FactoryBot.buildをして@itemをitem_spec.rbで定義をする
   # userをFactoryBot.createで定義しましょう
   # rspecでbuildとcreateの違いは何か？
-  
-  
+
   describe '商品出品機能' do
     before  do
       @user = FactoryBot.build(:user)
-    
+
       @item = FactoryBot.build(:item)
     end
     it '全ての出品がうまくいく時' do
@@ -33,7 +32,7 @@ RSpec.describe Item, type: :model do
     it 'カテゴリーの情報が必須であること' do
       @item.category = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include( "Category can't be blank")
+      expect(@item.errors.full_messages).to include("Category can't be blank")
     end
     it '商品の状態についての情報が必須であること' do
       @item.condition_id = nil
@@ -48,7 +47,7 @@ RSpec.describe Item, type: :model do
     it '発送元の地域についての情報が必須であること' do
       @item.shipping_from_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include( "Shipping from can't be blank")
+      expect(@item.errors.full_messages).to include("Shipping from can't be blank")
     end
     it '発送までの日数についての情報が必須であること' do
       @item.shipping_days_id = nil
@@ -58,22 +57,22 @@ RSpec.describe Item, type: :model do
     it '価格についての情報が必須であること' do
       @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages). to include("Price is not a number")
+      expect(@item.errors.full_messages). to include('Price is not a number')
     end
     it '価格が、¥300以上であること' do
       @item.price = 299
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of range")
+      expect(@item.errors.full_messages).to include('Price is out of range')
     end
     it '価格が、¥10,000,000未満であること' do
       @item.price = 10_000_000
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of range")
+      expect(@item.errors.full_messages).to include('Price is out of range')
     end
     it '販売価格は半角数字のみ入力可能であること' do
       @item.price = 'abc'
       @item.valid?
-      expect(@item.errors.full_messages). to include()
+      expect(@item.errors.full_messages). to include('Price is not a number')
     end
   end
 end
