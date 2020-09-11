@@ -125,7 +125,7 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-  <% if user_singed_in? %>
+    <% if @items[0]!= nil %>
     <% @items.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item) do %>
@@ -155,6 +155,7 @@
       </li>
     <% end %>
   <% else %>
+      <% if @items.length == 0%>
       <%# 商品がない場合のダミー %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
@@ -176,6 +177,7 @@
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合のダミー %>
+    <% end %>
   <% end %>
     </ul>
   </div>
