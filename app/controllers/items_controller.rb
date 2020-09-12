@@ -28,9 +28,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
 
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   
