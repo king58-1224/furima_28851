@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_from
   has_one_attached       :image
   belongs_to :user
+  has_one    :item_purchase
 
   # ①　imageを送るアクティブストレージとのアソシエーション　参考カリキュラム
   # ②　ユーザーとのアソシエーション　README
