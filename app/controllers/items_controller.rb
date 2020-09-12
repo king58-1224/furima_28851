@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
 
   
   def update
+    @item = Item.find(params[:id])
     if current_user.update(user_params)
       redirect_to root_path    
     else
