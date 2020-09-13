@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   has_one_attached       :image
   belongs_to :user
   has_one    :item_purchase
+  has_one    :address
 
   # ①　imageを送るアクティブストレージとのアソシエーション　参考カリキュラム
   # ②　ユーザーとのアソシエーション　README
