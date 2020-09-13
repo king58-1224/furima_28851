@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit]
+
   def index
     @items = Item.all
   end
@@ -23,6 +24,11 @@ class ItemsController < ApplicationController
 
   
   def update
+    if current_user.update(user_params)
+      redirect_to root_path    
+    else
+      render :edit
+    end
   end
 
 
