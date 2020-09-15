@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+
   end
 
   def create
@@ -24,7 +25,7 @@ class ItemsController < ApplicationController
 
   
   def update
-    if current_user.update(user_params)
+    if @item.update(item_params)
       redirect_to root_path    
     else
       render :edit
