@@ -44,7 +44,7 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| item_purchase_id    | integer    | null: false,foreign_key: true  |
+| item_id             | integer    | null: false,foreign_key: true  |
 | postal_code         | string     | null: false                    |
 | municipality        | string     | null: false                    |
 | prefecture_id       | integer    | null: false                    |

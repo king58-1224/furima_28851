@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   has_one_attached       :image
   belongs_to :user
   has_one    :item_purchase
+  has_one    :address
 
   # ①　imageを送るアクティブストレージとのアソシエーション　参考カリキュラム
   # ②　ユーザーとのアソシエーション　README
@@ -19,7 +20,6 @@ class Item < ApplicationRecord
   validates :price, inclusion: { in: 300..9_999_999, message: 'is out of range' }
 
   with_options presence: true do
-   validates :category_id, :condition_id, :shipping_cost_id, :shipping_days_id, :shipping_from_id, numericality:{ other_than: 1, message: "must be other than" } 
-   
+    validates :category_id, :condition_id, :shipping_cost_id, :shipping_days_id, :shipping_from_id, numericality: { other_than: 1, message: 'must be other than' }
   end
 end
