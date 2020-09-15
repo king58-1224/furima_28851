@@ -9,6 +9,7 @@ class Order
     validates :muncipality
     validates :block_number
     validates :phone_number, length: { maximum: 11 }
+    validates :token
   end
 
   def save

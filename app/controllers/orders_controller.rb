@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   def index
     @order = Order.new
     @item = Item.find(params[:item_id])
-    return redirect_to root_path if   @item.item_purchase
+    return redirect_to root_path if @item.item_purchase
   end
 
   def create
