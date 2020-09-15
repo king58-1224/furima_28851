@@ -1,5 +1,4 @@
 class Order
-
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :muncipality, :block_number, :apartment_name, :phone_number, :item_id, :user_id, :token
 

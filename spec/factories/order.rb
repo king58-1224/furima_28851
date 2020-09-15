@@ -6,6 +6,5 @@ FactoryBot.define do
     prefecture_id { '2' }
     block_number { '11' }
     phone_number { '09012345678' }
-  
   end
 end

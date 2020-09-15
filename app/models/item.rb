@@ -20,7 +20,6 @@ class Item < ApplicationRecord
   validates :price, inclusion: { in: 300..9_999_999, message: 'is out of range' }
 
   with_options presence: true do
-   validates :category_id, :condition_id, :shipping_cost_id, :shipping_days_id, :shipping_from_id, numericality:{ other_than: 1, message: "must be other than" } 
-   
+    validates :category_id, :condition_id, :shipping_cost_id, :shipping_days_id, :shipping_from_id, numericality: { other_than: 1, message: 'must be other than' }
   end
 end
