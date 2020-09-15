@@ -52,7 +52,12 @@ RSpec.describe Order, type: :model do
     it '電話番号にはハイフンは不要で、11桁以内であること' do
       @order.phone_number = '090123456789'
       @order.valid?
-      expect(@order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+      expect(@order.errors.full_messages).to include('Phone number is the wrong length (should be 11 characters)')
+    end
+    it '電話番号は11桁以内では登録できない' do
+      @order.phone_number = '090'
+      @order.valid?
+      expect(@order.errors.full_messages).to include('Phone number is the wrong length (should be 11 characters)')
     end
   end
 end

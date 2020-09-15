@@ -7,7 +7,7 @@ class Order
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :muncipality
     validates :block_number
-    validates :phone_number, length: { maximum: 11 }
+    validates :phone_number, { length: { is: 11 } }
     validates :token
   end
 
