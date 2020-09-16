@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_081424) do
   end
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id", null: false
+    t.integer "item_id", null: false
     t.string "postal_code", null: false
     t.string "muncipality", null: false
     t.integer "prefecture_id", null: false
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2020_09_12_081424) do
     t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_addresses_on_item_id"
   end
 
   create_table "item_purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,5 +85,4 @@ ActiveRecord::Schema.define(version: 2020_09_12_081424) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "items"
 end
